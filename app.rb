@@ -53,6 +53,22 @@ get("/payment/results") do
 end
 
 
+get("/random/new") do
+  erb(:new_random)
+end
+
+get("/random/results") do
+
+  @user_min = params.fetch("user_min").to_f
+
+  @user_max = params.fetch("user_max").to_f
+
+  @random = rand(@user_min..@user_max)
+
+  erb(:random_results)
+end
+
+
 get("/") do
   "
   <h1>Welcome to your Sinatra App!</h1>
